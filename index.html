@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BadAaaS — AI automation agency delivering elite sales agents, media buyers, and intelligence systems that run 24/7 without a payroll." />
+  <meta name="theme-color" content="#08080c" />
+  <meta property="og:title" content="BadAaaS — AI Automation Agency" />
+  <meta property="og:description" content="Deploy AI that books, sells, and closes — in 72 hours." />
+  <meta property="og:type" content="website" />
+  <title>BadAaaS — AI Automation Agency</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%2308080c'/><text y='.9em' font-size='80' x='10'>⚡</text></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#08080c',
+            accent: '#3b82f6',
+            'accent-dim': '#1d4ed8',
+            offwhite: '#f0f0f3',
+            muted: '#6b7280',
+            'muted-light': '#9ca3af',
+            metric: '#10b981',
+            'card-bg': '#0e0e14',
+            'card-border': '#1a1a24',
+            'card-border-hover': '#2a2a3a',
+          },
+          fontFamily: {
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+            body: ['DM Sans', 'sans-serif'],
+            mono: ['DM Mono', 'monospace'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: #08080c;
+      color: #f0f0f3;
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Grain overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    /* ── Dot grid hero ── */
+    .dot-grid {
+      background-image: radial-gradient(circle, rgba(59,130,246,0.18) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    /* ── Gradient meshes ── */
+    .mesh-blue {
+      background: radial-gradient(ellipse 60% 40% at 70% 50%, rgba(59,130,246,0.07) 0%, transparent 70%);
+    }
+    .mesh-blue-left {
+      background: radial-gradient(ellipse 50% 60% at 20% 50%, rgba(59,130,246,0.06) 0%, transparent 70%);
+    }
+
+    /* ── Nav ── */
+    nav { transition: background 0.3s, border-color 0.3s; }
+    nav.scrolled {
+      background: rgba(8,8,12,0.92) !important;
+      border-bottom-color: rgba(59,130,246,0.2) !important;
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-link {
+      position: relative;
+      color: #9ca3af;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      padding-bottom: 2px;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #3b82f6;
+      transition: width 0.25s ease;
+    }
+    .nav-link:hover { color: #f0f0f3; }
+    .nav-link:hover::after { width: 100%; }
+
+    /* ── Buttons ── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #3b82f6;
+      color: #fff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.875rem;
+      letter-spacing: 0.02em;
+      padding: 12px 28px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .btn-primary:hover {
+      background: #2563eb;
+      box-shadow: 0 0 24px rgba(59,130,246,0.4);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: #f0f0f3;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.02em;
+      padding: 12px 28px;
+      border-radius: 6px;
+      border: 1px solid rgba(240,240,243,0.2);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .btn-secondary:hover {
+      border-color: rgba(240,240,243,0.5);
+      background: rgba(240,240,243,0.05);
+      transform: translateY(-1px);
+    }
+
+    /* ── Stats bar ── */
+    .stat-divider {
+      width: 1px;
+      height: 32px;
+      background: rgba(240,240,243,0.1);
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: #0e0e14;
+      border: 1px solid #1a1a24;
+      border-radius: 10px;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    }
+    .card:hover {
+      border-color: rgba(59,130,246,0.4);
+      box-shadow: 0 8px 40px rgba(59,130,246,0.08), 0 2px 12px rgba(0,0,0,0.4);
+      transform: translateY(-3px);
+    }
+    .case-card:hover {
+      border-color: rgba(16,185,129,0.35);
+      box-shadow: 0 8px 40px rgba(16,185,129,0.07), 0 2px 12px rgba(0,0,0,0.4);
+      transform: translateY(-3px);
+    }
+
+    /* ── Marquee ── */
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .logo-item {
+      filter: grayscale(1) brightness(0.5);
+      transition: filter 0.3s;
+    }
+    .logo-item:hover { filter: grayscale(0) brightness(1); }
+
+    /* ── Fade-in on load ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+    .fade-in-delay-4 { transition-delay: 0.4s; }
+    .fade-in-delay-5 { transition-delay: 0.5s; }
+    .fade-in-delay-6 { transition-delay: 0.6s; }
+
+    /* ── Staggered hero ── */
+    .hero-eyebrow  { animation: heroFade 0.7s ease 0.1s both; }
+    .hero-headline { animation: heroFade 0.8s ease 0.25s both; }
+    .hero-sub      { animation: heroFade 0.7s ease 0.45s both; }
+    .hero-ctas     { animation: heroFade 0.7s ease 0.6s both; }
+    .hero-stats    { animation: heroFade 0.7s ease 0.75s both; }
+    @keyframes heroFade {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Metric highlight ── */
+    .metric-val {
+      font-family: 'DM Mono', monospace;
+      color: #10b981;
+      font-weight: 500;
+    }
+
+    /* ── Timeline ── */
+    .timeline-line {
+      position: absolute;
+      left: 28px;
+      top: 56px;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, rgba(59,130,246,0.4), transparent);
+    }
+
+    /* ── Accordion ── */
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.25s ease;
+    }
+    .accordion-body.open {
+      max-height: 400px;
+    }
+    .accordion-icon {
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    .accordion-icon.open { transform: rotate(45deg); }
+
+    /* ── Section headers ── */
+    .section-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #3b82f6;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-eyebrow::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: #3b82f6;
+    }
+
+    /* ── Trust badge ── */
+    .trust-badge {
+      background: #0e0e14;
+      border: 1px solid #1a1a24;
+      border-radius: 10px;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+      transition: border-color 0.25s;
+    }
+    .trust-badge:hover { border-color: rgba(59,130,246,0.35); }
+
+    /* ── Service card icon box ── */
+    .icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(59,130,246,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #08080c; }
+    ::-webkit-scrollbar-thumb { background: #1a1a24; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #2a2a3a; }
+
+    /* ── Step number ── */
+    .step-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: #3b82f6;
+      background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(59,130,246,0.25);
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ── Why grid icon ── */
+    .why-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: rgba(59,130,246,0.08);
+      border: 1px solid rgba(59,130,246,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── Gradient text ── */
+    .gradient-text {
+      background: linear-gradient(135deg, #f0f0f3 40%, #3b82f6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Border glow on CTA section ── */
+    .cta-glow {
+      box-shadow: 0 0 80px rgba(59,130,246,0.12), inset 0 1px 0 rgba(59,130,246,0.15);
+    }
+
+    /* ── Mobile nav ── */
+    #mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      background: rgba(8,8,12,0.97);
+      border-top: 1px solid #1a1a24;
+      padding: 16px 24px 24px;
+    }
+    #mobile-menu.open { display: flex; }
+    .mobile-link {
+      color: #9ca3af;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 10px 0;
+      border-bottom: 1px solid #1a1a24;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .mobile-link:hover { color: #f0f0f3; }
+
+    /* Hamburger */
+    #hamburger { cursor: pointer; display: flex; flex-direction: column; gap: 5px; padding: 4px; }
+    #hamburger span { display: block; width: 22px; height: 1.5px; background: #f0f0f3; border-radius: 2px; transition: all 0.25s; }
+    #hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    #hamburger.open span:nth-child(2) { opacity: 0; }
+    #hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════════ -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 border-b border-transparent" style="background:transparent;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2 text-offwhite no-underline">
+        <div style="width:32px;height:32px;background:#3b82f6;border-radius:7px;display:flex;align-items:center;justify-content:center;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1L14 5V11L8 15L2 11V5L8 1Z" fill="white" fill-opacity="0.9"/><path d="M8 4L11 6V10L8 12L5 10V6L8 4Z" fill="white"/></svg>
+        </div>
+        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:-0.02em;">BadAaaS</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#case-studies" class="nav-link">Case Studies</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#team" class="nav-link">Team</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </div>
+
+      <!-- CTA -->
+      <div class="hidden md:flex items-center gap-3">
+        <a href="#community" class="btn-secondary" style="padding:9px 20px;font-size:0.8rem;">Join Community</a>
+        <a href="#final-cta" class="btn-primary" style="padding:9px 20px;font-size:0.8rem;">Book a Call</a>
+      </div>
+
+      <!-- Hamburger -->
+      <div id="hamburger" class="md:hidden" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu">
+    <a href="#case-studies" class="mobile-link" onclick="closeMenu()">Case Studies</a>
+    <a href="#services" class="mobile-link" onclick="closeMenu()">Services</a>
+    <a href="#how-it-works" class="mobile-link" onclick="closeMenu()">How It Works</a>
+    <a href="#team" class="mobile-link" onclick="closeMenu()">Team</a>
+    <a href="#faq" class="mobile-link" onclick="closeMenu()">FAQ</a>
+    <a href="#community" class="mobile-link" onclick="closeMenu()">Join Community</a>
+    <div style="padding-top:12px;">
+      <a href="#final-cta" class="btn-primary" style="width:100%;justify-content:center;" onclick="closeMenu()">Book a Call</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 1 — HERO
+════════════════════════════════════════════ -->
+<section id="hero" class="relative min-h-screen flex flex-col justify-center overflow-hidden dot-grid">
+  <!-- Gradient mesh -->
+  <div class="absolute inset-0 mesh-blue pointer-events-none"></div>
+  <div class="absolute inset-0 mesh-blue-left pointer-events-none"></div>
+  <!-- Bottom fade -->
+  <div class="absolute bottom-0 left-0 right-0 h-48 pointer-events-none" style="background:linear-gradient(to bottom, transparent, #08080c);"></div>
+
+  <div class="max-w-7xl mx-auto px-6 pt-28 pb-20 w-full">
+    <div class="max-w-4xl">
+      <!-- Eyebrow -->
+      <div class="hero-eyebrow mb-6">
+        <span class="section-eyebrow">AI Automation Agency</span>
+        <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:#6b7280;letter-spacing:0.08em;background:#0e0e14;border:1px solid #1a1a24;padding:3px 10px;border-radius:20px;">72-hr Deployment</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="hero-headline" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:800;line-height:1.05;letter-spacing:-0.04em;color:#f0f0f3;margin-bottom:1.5rem;">
+        Your Business Runs<br />
+        <span class="gradient-text">24/7 on AI.</span><br />
+        <span style="color:#f0f0f3;">Your Competitors Don't.</span>
+      </h1>
+
+      <!-- Subheading -->
+      <p class="hero-sub" style="font-size:clamp(1rem,2.2vw,1.2rem);color:#9ca3af;max-width:600px;line-height:1.7;margin-bottom:2.5rem;">
+        We deploy AI sales agents, media buyers, and intelligence systems that book, qualify, and close — without a payroll, without sick days, without dropping a lead.
+      </p>
+
+      <!-- CTAs -->
+      <div class="hero-ctas flex flex-wrap gap-4 mb-16">
+        <a href="#final-cta" class="btn-primary" style="font-size:0.95rem;padding:14px 32px;">
+          <i data-lucide="calendar" style="width:16px;height:16px;"></i>
+          Book a Strategy Call
+        </a>
+        <a href="#case-studies" class="btn-secondary" style="font-size:0.95rem;padding:14px 32px;">
+          See Results
+          <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+        </a>
+      </div>
+
+      <!-- Stats Bar -->
+      <div class="hero-stats flex flex-wrap items-center gap-6 md:gap-0">
+        <div class="text-center px-0 md:pr-8">
+          <div style="font-family:'DM Mono',monospace;font-size:1.8rem;font-weight:500;color:#10b981;">$2.4M+</div>
+          <div style="font-size:0.75rem;color:#6b7280;letter-spacing:0.05em;text-transform:uppercase;margin-top:2px;">Revenue Generated</div>
+        </div>
+        <div class="stat-divider hidden md:block"></div>
+        <div class="text-center px-0 md:px-8">
+          <div style="font-family:'DM Mono',monospace;font-size:1.8rem;font-weight:500;color:#10b981;">6+</div>
+          <div style="font-size:0.75rem;color:#6b7280;letter-spacing:0.05em;text-transform:uppercase;margin-top:2px;">Verticals Automated</div>
+        </div>
+        <div class="stat-divider hidden md:block"></div>
+        <div class="text-center px-0 md:px-8">
+          <div style="font-family:'DM Mono',monospace;font-size:1.8rem;font-weight:500;color:#10b981;">100%</div>
+          <div style="font-size:0.75rem;color:#6b7280;letter-spacing:0.05em;text-transform:uppercase;margin-top:2px;">Call Coverage</div>
+        </div>
+        <div class="stat-divider hidden md:block"></div>
+        <div class="text-center px-0 md:pl-8">
+          <div style="font-family:'DM Mono',monospace;font-size:1.8rem;font-weight:500;color:#10b981;">72hr</div>
+          <div style="font-size:0.75rem;color:#6b7280;letter-spacing:0.05em;text-transform:uppercase;margin-top:2px;">Avg Deploy Time</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 2 — LOGO STRIP
+════════════════════════════════════════════ -->
+<section class="relative py-14 overflow-hidden" style="border-top:1px solid #1a1a24;border-bottom:1px solid #1a1a24;">
+  <div class="text-center mb-8 fade-in">
+    <p style="font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:#6b7280;">Trusted by forward-thinking companies</p>
+  </div>
+  <div class="relative overflow-hidden">
+    <!-- Left fade -->
+    <div class="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style="background:linear-gradient(to right,#08080c,transparent);"></div>
+    <!-- Right fade -->
+    <div class="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style="background:linear-gradient(to left,#08080c,transparent);"></div>
+
+    <div class="marquee-track">
+      <!-- Set 1 -->
+      <div class="flex items-center gap-16 px-8">
+        <div class="logo-item flex items-center gap-2" style="min-width:140px;">
+          <div style="width:32px;height:32px;background:#1a1a24;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="color:#3b82f6;font-size:14px;font-weight:700;">I</span></div>
+          <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.9rem;color:#f0f0f3;white-space:nowrap;">IAPDA</span>
+        </div>
+        <div class="logo-item flex items-center gap-2" style="min-width:200px;">
+          <div style="width:32px;height:32px;background:#1a1a24;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="color:#10b981;font-size:14px;font-weight:700;">E</span></div>
+          <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.9rem;color:#f0f0f3;white-space:nowrap;">Express Mortgage</span>
+        </div>
+        <div class="logo-item flex items-center gap-2" style="min-width:180px;">
+          <div style="width:32px;height:32px;background:#1a1a24;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="color:#f59e0b;font-size:14px;font-weight:700;">C</span></div>
+          <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.9rem;color:#f0f0f3;white-space:nowrap;">Carma Auto Group</span>
+        </div>
+        <div class="logo-item flex items-center gap-2" style="min-width:200px;">
+          <div style="width:32px;height:32px;background:#1a1a24;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="color:#8b5cf6;font-size:14px;font-weight:700;">P</span></div>
+          <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.9rem;color:#f0f0f3;white-space:nowrap;">Pinnacle Investments</span>
+        </div>
+        <div class="logo-item flex items-center gap-2" style="min-width:200px;">
+          <div style="width:32px;height:32px;background:#1a1a24;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="color:#ec4899;font-size:14px;font-weight:700;">T</span></div>
+          <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.9rem;color:#f0f0f3;white-space:nowrap;">Trujillo Funeral Homes</span>
+        </div>
+        <div class="logo-item flex items-center gap-2" style="min-width:160px;">
+          <div style="width:32px;height:32px;background:#1a1a24;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="color:#f97316;font-size:14px;font-weight:700;">S</span></div>
+          <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.9rem;color:#f0f0f3;white-space:nowrap;">Solarsphere</span>
+        </div>
+      </div>
+      <!-- Set 2 (duplicate for seamless loop) -->
+      <div class="flex items-center gap-16 px-8">
+        <div class="logo-item flex items-center gap-2" style="min-width:140px;">
+          <div style="width:32px;height:32px;background:#1a1a24;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="color:#3b82f6;font-size:14px;font-weight:700;">I</span></div>
+          <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.9rem;color:#f0f0f3;white-space:nowrap;">IAPDA</span>
+        </div>
+        <div class="logo-item flex items-center gap-2" style="min-width:200px;">
+          <div style="width:32px;height:32px;background:#1a1a24;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="color:#10b981;font-size:14px;font-weight:700;">E</span></div>
+          <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.9rem;color:#f0f0f3;white-space:nowrap;">Express Mortgage</span>
+        </div>
+        <div class="logo-item flex items-center gap-2" style="min-width:180px;">
+          <div style="width:32px;height:32px;background:#1a1a24;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="color:#f59e0b;font-size:14px;font-weight:700;">C</span></div>
+          <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.9rem;color:#f0f0f3;white-space:nowrap;">Carma Auto Group</span>
+        </div>
+        <div class="logo-item flex items-center gap-2" style="min-width:200px;">
+          <div style="width:32px;height:32px;background:#1a1a24;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="color:#8b5cf6;font-size:14px;font-weight:700;">P</span></div>
+          <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.9rem;color:#f0f0f3;white-space:nowrap;">Pinnacle Investments</span>
+        </div>
+        <div class="logo-item flex items-center gap-2" style="min-width:200px;">
+          <div style="width:32px;height:32px;background:#1a1a24;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="color:#ec4899;font-size:14px;font-weight:700;">T</span></div>
+          <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.9rem;color:#f0f0f3;white-space:nowrap;">Trujillo Funeral Homes</span>
+        </div>
+        <div class="logo-item flex items-center gap-2" style="min-width:160px;">
+          <div style="width:32px;height:32px;background:#1a1a24;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="color:#f97316;font-size:14px;font-weight:700;">S</span></div>
+          <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.9rem;color:#f0f0f3;white-space:nowrap;">Solarsphere</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 3 — CASE STUDIES
+════════════════════════════════════════════ -->
+<section id="case-studies" class="py-24 max-w-7xl mx-auto px-6">
+  <div class="text-center mb-16 fade-in">
+    <div class="flex justify-center mb-4"><span class="section-eyebrow">Proven Results</span></div>
+    <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:800;letter-spacing:-0.03em;color:#f0f0f3;">
+      Real Numbers.<br />Real Companies.
+    </h2>
+    <p style="color:#6b7280;margin-top:12px;font-size:1rem;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.6;">Not projections. Not averages. These are documented outcomes from live deployments.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+    <!-- IAPDA -->
+    <div class="card case-card p-6 fade-in fade-in-delay-1">
+      <div class="flex items-start justify-between mb-4">
+        <div>
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1rem;color:#f0f0f3;">IAPDA</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:#6b7280;letter-spacing:0.08em;text-transform:uppercase;margin-top:2px;">Professional Certification</div>
+        </div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.68rem;color:#3b82f6;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);padding:3px 10px;border-radius:20px;white-space:nowrap;">AI Media Buyer</div>
+      </div>
+      <div style="width:100%;height:1px;background:#1a1a24;margin-bottom:16px;"></div>
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <div>
+          <div class="metric-val" style="font-size:1.6rem;">78%</div>
+          <div style="font-size:0.75rem;color:#6b7280;margin-top:2px;line-height:1.4;">Cost reduction in ad spend</div>
+        </div>
+        <div>
+          <div class="metric-val" style="font-size:1.6rem;">33%</div>
+          <div style="font-size:0.75rem;color:#6b7280;margin-top:2px;line-height:1.4;">Increase in conversion rate</div>
+        </div>
+      </div>
+      <p style="font-size:0.825rem;color:#9ca3af;line-height:1.6;">Deployed an AI media buyer that automated bid optimization and creative testing across paid channels — slashing waste while driving qualified inbound leads.</p>
+    </div>
+
+    <!-- Express Mortgage -->
+    <div class="card case-card p-6 fade-in fade-in-delay-2">
+      <div class="flex items-start justify-between mb-4">
+        <div>
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1rem;color:#f0f0f3;">Express Mortgage</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:#6b7280;letter-spacing:0.08em;text-transform:uppercase;margin-top:2px;">Mortgage Lending</div>
+        </div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.68rem;color:#3b82f6;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);padding:3px 10px;border-radius:20px;white-space:nowrap;">AI Sales Agent</div>
+      </div>
+      <div style="width:100%;height:1px;background:#1a1a24;margin-bottom:16px;"></div>
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <div>
+          <div class="metric-val" style="font-size:1.6rem;">42%</div>
+          <div style="font-size:0.75rem;color:#6b7280;margin-top:2px;line-height:1.4;">Booking rate from cold outreach</div>
+        </div>
+        <div>
+          <div class="metric-val" style="font-size:1.6rem;">100%</div>
+          <div style="font-size:0.75rem;color:#6b7280;margin-top:2px;line-height:1.4;">Follow-up rate on all leads</div>
+        </div>
+      </div>
+      <p style="font-size:0.825rem;color:#9ca3af;line-height:1.6;">AI voice agent handles inbound qualification, books consultations automatically, and follows up with every lead — no dropped balls, ever.</p>
+    </div>
+
+    <!-- Carma Auto Group -->
+    <div class="card case-card p-6 fade-in fade-in-delay-3">
+      <div class="flex items-start justify-between mb-4">
+        <div>
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1rem;color:#f0f0f3;">Carma Auto Group</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:#6b7280;letter-spacing:0.08em;text-transform:uppercase;margin-top:2px;">Automotive Dealership</div>
+        </div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.68rem;color:#3b82f6;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);padding:3px 10px;border-radius:20px;white-space:nowrap;">AI Sales Agent</div>
+      </div>
+      <div style="width:100%;height:1px;background:#1a1a24;margin-bottom:16px;"></div>
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <div>
+          <div class="metric-val" style="font-size:1.6rem;">19%</div>
+          <div style="font-size:0.75px;color:#6b7280;margin-top:2px;line-height:1.4;">Increase in test drive bookings</div>
+        </div>
+        <div>
+          <div class="metric-val" style="font-size:1.6rem;">21%</div>
+          <div style="font-size:0.75rem;color:#6b7280;margin-top:2px;line-height:1.4;">Lift in overall conversions</div>
+        </div>
+      </div>
+      <p style="font-size:0.825rem;color:#9ca3af;line-height:1.6;">AI SMS and voice agent handles every inbound inquiry — answers questions, qualifies intent, and books appointments directly into the service calendar.</p>
+    </div>
+
+    <!-- Pinnacle Investments -->
+    <div class="card case-card p-6 fade-in fade-in-delay-1">
+      <div class="flex items-start justify-between mb-4">
+        <div>
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1rem;color:#f0f0f3;">Pinnacle Investments</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:#6b7280;letter-spacing:0.08em;text-transform:uppercase;margin-top:2px;">Financial Services</div>
+        </div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.68rem;color:#3b82f6;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);padding:3px 10px;border-radius:20px;white-space:nowrap;">Leadr Intelligence</div>
+      </div>
+      <div style="width:100%;height:1px;background:#1a1a24;margin-bottom:16px;"></div>
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <div>
+          <div class="metric-val" style="font-size:1.6rem;">7%</div>
+          <div style="font-size:0.75rem;color:#6b7280;margin-top:2px;line-height:1.4;">Cold-to-close conversion rate</div>
+        </div>
+        <div>
+          <div class="metric-val" style="font-size:1.6rem;">5x</div>
+          <div style="font-size:0.75rem;color:#6b7280;margin-top:2px;line-height:1.4;">More dials per rep per hour</div>
+        </div>
+      </div>
+      <p style="font-size:0.825rem;color:#9ca3af;line-height:1.6;">Leadr Intelligence system identified high-intent prospects, auto-dialed with AI pre-qualification, and routed only ready buyers to human advisors.</p>
+    </div>
+
+    <!-- Trujillo Funeral Homes -->
+    <div class="card case-card p-6 fade-in fade-in-delay-2">
+      <div class="flex items-start justify-between mb-4">
+        <div>
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1rem;color:#f0f0f3;">Trujillo Funeral Homes</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:#6b7280;letter-spacing:0.08em;text-transform:uppercase;margin-top:2px;">Funeral Services</div>
+        </div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.68rem;color:#3b82f6;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);padding:3px 10px;border-radius:20px;white-space:nowrap;">AI Media Buyer</div>
+      </div>
+      <div style="width:100%;height:1px;background:#1a1a24;margin-bottom:16px;"></div>
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <div>
+          <div class="metric-val" style="font-size:1.6rem;">4x</div>
+          <div style="font-size:0.75rem;color:#6b7280;margin-top:2px;line-height:1.4;">Return on ad spend</div>
+        </div>
+        <div>
+          <div class="metric-val" style="font-size:1.6rem;">72%</div>
+          <div style="font-size:0.75rem;color:#6b7280;margin-top:2px;line-height:1.4;">Consultation close rate</div>
+        </div>
+      </div>
+      <p style="font-size:0.825rem;color:#9ca3af;line-height:1.6;">A compassionate AI nurture sequence and precision ad targeting delivered pre-need plan inquiries with an industry-leading close rate.</p>
+    </div>
+
+    <!-- Solarsphere -->
+    <div class="card case-card p-6 fade-in fade-in-delay-3">
+      <div class="flex items-start justify-between mb-4">
+        <div>
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1rem;color:#f0f0f3;">Solarsphere</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:#6b7280;letter-spacing:0.08em;text-transform:uppercase;margin-top:2px;">Solar Energy</div>
+        </div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.68rem;color:#3b82f6;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);padding:3px 10px;border-radius:20px;white-space:nowrap;">AI Sales Agent</div>
+      </div>
+      <div style="width:100%;height:1px;background:#1a1a24;margin-bottom:16px;"></div>
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <div>
+          <div class="metric-val" style="font-size:1.6rem;">$32k</div>
+          <div style="font-size:0.75rem;color:#6b7280;margin-top:2px;line-height:1.4;">New revenue in first month</div>
+        </div>
+        <div>
+          <div class="metric-val" style="font-size:1.6rem;">100%</div>
+          <div style="font-size:0.75rem;color:#6b7280;margin-top:2px;line-height:1.4;">Of inbound calls answered</div>
+        </div>
+      </div>
+      <p style="font-size:0.825rem;color:#9ca3af;line-height:1.6;">AI voice agent answered every inbound inquiry 24/7, qualified homeowners for solar eligibility, and booked site assessments — generating $32k in new pipeline within 30 days.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 4 — SERVICES
+════════════════════════════════════════════ -->
+<section id="services" class="py-24 relative overflow-hidden" style="border-top:1px solid #1a1a24;">
+  <div class="absolute inset-0 mesh-blue pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="text-center mb-16 fade-in">
+      <div class="flex justify-center mb-4"><span class="section-eyebrow">What We Build</span></div>
+      <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:800;letter-spacing:-0.03em;color:#f0f0f3;">Three Systems.<br/>One Mission.</h2>
+      <p style="color:#6b7280;margin-top:12px;font-size:1rem;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.6;">Deploy autonomous AI infrastructure that works every hour your team doesn't.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- AI Media Buyer -->
+      <div class="card p-7 fade-in fade-in-delay-1">
+        <div class="icon-box mb-5">
+          <i data-lucide="trending-up" style="width:20px;height:20px;color:#3b82f6;"></i>
+        </div>
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.15rem;color:#f0f0f3;margin-bottom:8px;">AI Media Buyer</h3>
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.65;margin-bottom:16px;">Fully autonomous paid media operations. The AI manages bidding, creatives, audience targeting, and budget allocation — optimizing 24/7 without a human in the loop.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;align-items:flex-start;gap:8px;font-size:0.825rem;color:#9ca3af;">
+            <i data-lucide="check" style="width:14px;height:14px;color:#10b981;margin-top:1px;flex-shrink:0;"></i>
+            Real-time bid optimization across Meta, Google, TikTok
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px;font-size:0.825rem;color:#9ca3af;">
+            <i data-lucide="check" style="width:14px;height:14px;color:#10b981;margin-top:1px;flex-shrink:0;"></i>
+            Automated creative testing and rotation
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px;font-size:0.825rem;color:#9ca3af;">
+            <i data-lucide="check" style="width:14px;height:14px;color:#10b981;margin-top:1px;flex-shrink:0;"></i>
+            Audience segmentation and retargeting logic
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px;font-size:0.825rem;color:#9ca3af;">
+            <i data-lucide="check" style="width:14px;height:14px;color:#10b981;margin-top:1px;flex-shrink:0;"></i>
+            Live performance dashboards with ROAS tracking
+          </li>
+        </ul>
+      </div>
+
+      <!-- AI Sales Agents -->
+      <div class="card p-7 fade-in fade-in-delay-2" style="border-color:rgba(59,130,246,0.3);box-shadow:0 0 40px rgba(59,130,246,0.08);">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+          <div class="icon-box">
+            <i data-lucide="bot" style="width:20px;height:20px;color:#3b82f6;"></i>
+          </div>
+          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:#3b82f6;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);padding:3px 10px;border-radius:20px;letter-spacing:0.08em;">MOST POPULAR</span>
+        </div>
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.15rem;color:#f0f0f3;margin-bottom:8px;">AI Sales Agents</h3>
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.65;margin-bottom:16px;">Voice and SMS agents that qualify inbound leads, answer objections, and book appointments — operating around the clock without a single payroll dollar.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;align-items:flex-start;gap:8px;font-size:0.825rem;color:#9ca3af;">
+            <i data-lucide="check" style="width:14px;height:14px;color:#10b981;margin-top:1px;flex-shrink:0;"></i>
+            AI voice agents with natural conversation flow
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px;font-size:0.825rem;color:#9ca3af;">
+            <i data-lucide="check" style="width:14px;height:14px;color:#10b981;margin-top:1px;flex-shrink:0;"></i>
+            SMS follow-up sequences with human-like timing
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px;font-size:0.825rem;color:#9ca3af;">
+            <i data-lucide="check" style="width:14px;height:14px;color:#10b981;margin-top:1px;flex-shrink:0;"></i>
+            CRM integration and auto-scheduling
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px;font-size:0.825rem;color:#9ca3af;">
+            <i data-lucide="check" style="width:14px;height:14px;color:#10b981;margin-top:1px;flex-shrink:0;"></i>
+            Objection handling trained on your offer
+          </li>
+        </ul>
+      </div>
+
+      <!-- Leadr Intelligence -->
+      <div class="card p-7 fade-in fade-in-delay-3">
+        <div class="icon-box mb-5">
+          <i data-lucide="brain-circuit" style="width:20px;height:20px;color:#3b82f6;"></i>
+        </div>
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.15rem;color:#f0f0f3;margin-bottom:8px;">Leadr Intelligence</h3>
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.65;margin-bottom:16px;">AI-powered lead intelligence that scores, segments, and prioritizes your pipeline — so your team only touches buyers, never tire-kickers.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;align-items:flex-start;gap:8px;font-size:0.825rem;color:#9ca3af;">
+            <i data-lucide="check" style="width:14px;height:14px;color:#10b981;margin-top:1px;flex-shrink:0;"></i>
+            Predictive lead scoring from behavioral signals
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px;font-size:0.825rem;color:#9ca3af;">
+            <i data-lucide="check" style="width:14px;height:14px;color:#10b981;margin-top:1px;flex-shrink:0;"></i>
+            Automated data enrichment and intent mapping
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px;font-size:0.825rem;color:#9ca3af;">
+            <i data-lucide="check" style="width:14px;height:14px;color:#10b981;margin-top:1px;flex-shrink:0;"></i>
+            Real-time routing to the right rep or sequence
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px;font-size:0.825rem;color:#9ca3af;">
+            <i data-lucide="check" style="width:14px;height:14px;color:#10b981;margin-top:1px;flex-shrink:0;"></i>
+            Pipeline analytics and conversion attribution
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 5 — HOW IT WORKS
+════════════════════════════════════════════ -->
+<section id="how-it-works" class="py-24 max-w-7xl mx-auto px-6">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div class="fade-in">
+      <div class="mb-4"><span class="section-eyebrow">The Process</span></div>
+      <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;color:#f0f0f3;margin-bottom:16px;">Live in<br/><span style="color:#3b82f6;">72 Hours.</span></h2>
+      <p style="font-size:1rem;color:#6b7280;line-height:1.7;max-width:420px;">No 6-month retainers to start. No endless onboarding. We assess, build, and deploy — fast. The AI is working before your next sales call.</p>
+    </div>
+
+    <div class="fade-in fade-in-delay-2">
+      <div class="flex flex-col gap-0">
+
+        <!-- Step 1 -->
+        <div class="relative flex gap-5 pb-10">
+          <div class="flex flex-col items-center">
+            <div class="step-num">01</div>
+            <div style="width:1px;flex:1;background:linear-gradient(to bottom,rgba(59,130,246,0.3),transparent);margin-top:8px;"></div>
+          </div>
+          <div style="padding-top:6px;">
+            <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1rem;color:#f0f0f3;margin-bottom:6px;">Discovery &amp; Audit</div>
+            <p style="font-size:0.875rem;color:#6b7280;line-height:1.65;max-width:380px;">We map your current sales process, ad accounts, and CRM. We identify every leak in your pipeline — calls dropped, leads ghosted, budget wasted.</p>
+            <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:#3b82f6;margin-top:10px;letter-spacing:0.05em;">⟶ 24–48 hrs</div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative flex gap-5 pb-10">
+          <div class="flex flex-col items-center">
+            <div class="step-num">02</div>
+            <div style="width:1px;flex:1;background:linear-gradient(to bottom,rgba(59,130,246,0.3),transparent);margin-top:8px;"></div>
+          </div>
+          <div style="padding-top:6px;">
+            <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1rem;color:#f0f0f3;margin-bottom:6px;">Build &amp; Integration</div>
+            <p style="font-size:0.875rem;color:#6b7280;line-height:1.65;max-width:380px;">We configure your AI agents, train them on your offer and objections, connect your CRM and calendars, and run QA tests to ensure perfect behavior under load.</p>
+            <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:#3b82f6;margin-top:10px;letter-spacing:0.05em;">⟶ 48–72 hrs</div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative flex gap-5">
+          <div class="flex flex-col items-center">
+            <div class="step-num">03</div>
+          </div>
+          <div style="padding-top:6px;">
+            <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1rem;color:#f0f0f3;margin-bottom:6px;">Launch &amp; Optimize</div>
+            <p style="font-size:0.875rem;color:#6b7280;line-height:1.65;max-width:380px;">Go live. The AI starts working immediately. We monitor performance, tune the models, and provide you with real-time dashboards so you always know exactly what's happening.</p>
+            <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:#10b981;margin-top:10px;letter-spacing:0.05em;">⟶ Ongoing, 24/7</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 6 — WHY BADAAAS
+════════════════════════════════════════════ -->
+<section id="why" class="py-24 relative overflow-hidden" style="border-top:1px solid #1a1a24;">
+  <div class="absolute inset-0 mesh-blue-left pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="text-center mb-16 fade-in">
+      <div class="flex justify-center mb-4"><span class="section-eyebrow">The Advantage</span></div>
+      <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:800;letter-spacing:-0.03em;color:#f0f0f3;">Built for the Full<br/>Revenue Cycle.</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+      <!-- Attraction -->
+      <div class="card p-7 fade-in fade-in-delay-1">
+        <div class="why-icon mb-4">
+          <i data-lucide="magnet" style="width:18px;height:18px;color:#3b82f6;"></i>
+        </div>
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.05rem;color:#f0f0f3;margin-bottom:8px;">Attraction</h3>
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.65;">AI media buyers that don't sleep. Your ads are being optimized at 3am while your competitors' campaigns stagnate. Better targeting, lower CPL, more qualified clicks — automatically.</p>
+      </div>
+
+      <!-- Conversion -->
+      <div class="card p-7 fade-in fade-in-delay-2">
+        <div class="why-icon mb-4">
+          <i data-lucide="arrow-right-left" style="width:18px;height:18px;color:#3b82f6;"></i>
+        </div>
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.05rem;color:#f0f0f3;margin-bottom:8px;">Conversion</h3>
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.65;">Every lead gets a response within seconds. AI voice and SMS agents qualify, handle objections, and book — before the prospect has time to forget they filled out your form.</p>
+      </div>
+
+      <!-- Analytics -->
+      <div class="card p-7 fade-in fade-in-delay-3">
+        <div class="why-icon mb-4">
+          <i data-lucide="bar-chart-2" style="width:18px;height:18px;color:#3b82f6;"></i>
+        </div>
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.05rem;color:#f0f0f3;margin-bottom:8px;">Analytics</h3>
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.65;">Full-funnel visibility. From the first ad impression to signed deal — we track every touchpoint, attribute revenue, and surface the insights that actually move the needle.</p>
+      </div>
+
+      <!-- Systems -->
+      <div class="card p-7 fade-in fade-in-delay-4">
+        <div class="why-icon mb-4">
+          <i data-lucide="cog" style="width:18px;height:18px;color:#3b82f6;"></i>
+        </div>
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.05rem;color:#f0f0f3;margin-bottom:8px;">Systems</h3>
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.65;">We don't build tools, we build infrastructure. Everything integrates — CRM, calendar, dialer, ad platform, analytics — so the machine runs without manual intervention.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 7 — FAQ
+════════════════════════════════════════════ -->
+<section id="faq" class="py-24 max-w-4xl mx-auto px-6">
+  <div class="text-center mb-16 fade-in">
+    <div class="flex justify-center mb-4"><span class="section-eyebrow">Questions</span></div>
+    <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:800;letter-spacing:-0.03em;color:#f0f0f3;">Everything You<br/>Need to Know.</h2>
+  </div>
+
+  <div class="flex flex-col gap-3 fade-in fade-in-delay-1" id="faq-list">
+
+    <div class="card p-0 overflow-hidden accordion-item">
+      <button onclick="toggleAccordion(this)" class="w-full text-left p-5 flex items-center justify-between gap-4" style="background:transparent;border:none;cursor:pointer;color:#f0f0f3;">
+        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:0.95rem;">What industries do you work with?</span>
+        <i data-lucide="plus" class="accordion-icon" style="width:18px;height:18px;color:#6b7280;"></i>
+      </button>
+      <div class="accordion-body px-5 pb-0">
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;padding-bottom:20px;">We've deployed AI systems across mortgage, automotive, financial services, solar energy, professional certifications, and funeral services. Our approach is industry-agnostic — if you have a sales process, we can automate it.</p>
+      </div>
+    </div>
+
+    <div class="card p-0 overflow-hidden accordion-item">
+      <button onclick="toggleAccordion(this)" class="w-full text-left p-5 flex items-center justify-between gap-4" style="background:transparent;border:none;cursor:pointer;color:#f0f0f3;">
+        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:0.95rem;">How is BadAaaS different from other AI automation agencies?</span>
+        <i data-lucide="plus" class="accordion-icon" style="width:18px;height:18px;color:#6b7280;"></i>
+      </button>
+      <div class="accordion-body px-5 pb-0">
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;padding-bottom:20px;">We build systems, not Zapier chains. Our AI agents are trained on your specific offer and objections, integrated end-to-end with your stack, and deployed in 72 hours. We own outcomes — not just deliverables.</p>
+      </div>
+    </div>
+
+    <div class="card p-0 overflow-hidden accordion-item">
+      <button onclick="toggleAccordion(this)" class="w-full text-left p-5 flex items-center justify-between gap-4" style="background:transparent;border:none;cursor:pointer;color:#f0f0f3;">
+        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:0.95rem;">Will the AI sound robotic to my customers?</span>
+        <i data-lucide="plus" class="accordion-icon" style="width:18px;height:18px;color:#6b7280;"></i>
+      </button>
+      <div class="accordion-body px-5 pb-0">
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;padding-bottom:20px;">No. Our voice agents use state-of-the-art natural language models fine-tuned on real sales conversations. Most clients report their customers can't tell the difference — and our conversation logs back that up.</p>
+      </div>
+    </div>
+
+    <div class="card p-0 overflow-hidden accordion-item">
+      <button onclick="toggleAccordion(this)" class="w-full text-left p-5 flex items-center justify-between gap-4" style="background:transparent;border:none;cursor:pointer;color:#f0f0f3;">
+        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:0.95rem;">What does the 72-hour deployment actually include?</span>
+        <i data-lucide="plus" class="accordion-icon" style="width:18px;height:18px;color:#6b7280;"></i>
+      </button>
+      <div class="accordion-body px-5 pb-0">
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;padding-bottom:20px;">Full build: AI agent configuration, CRM integration, calendar sync, conversation flow training, QA testing, and live deployment. You get a working system — not a prototype — ready to handle real leads within 72 hours of kickoff.</p>
+      </div>
+    </div>
+
+    <div class="card p-0 overflow-hidden accordion-item">
+      <button onclick="toggleAccordion(this)" class="w-full text-left p-5 flex items-center justify-between gap-4" style="background:transparent;border:none;cursor:pointer;color:#f0f0f3;">
+        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:0.95rem;">What CRMs and tools do you integrate with?</span>
+        <i data-lucide="plus" class="accordion-icon" style="width:18px;height:18px;color:#6b7280;"></i>
+      </button>
+      <div class="accordion-body px-5 pb-0">
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;padding-bottom:20px;">We integrate natively with GoHighLevel, HubSpot, Salesforce, Calendly, Google Calendar, Twilio, and most major ad platforms. If you use something not on this list, we've likely built a custom integration before — just ask.</p>
+      </div>
+    </div>
+
+    <div class="card p-0 overflow-hidden accordion-item">
+      <button onclick="toggleAccordion(this)" class="w-full text-left p-5 flex items-center justify-between gap-4" style="background:transparent;border:none;cursor:pointer;color:#f0f0f3;">
+        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:0.95rem;">Do I need a large budget to get started?</span>
+        <i data-lucide="plus" class="accordion-icon" style="width:18px;height:18px;color:#6b7280;"></i>
+      </button>
+      <div class="accordion-body px-5 pb-0">
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;padding-bottom:20px;">Our systems are designed to pay for themselves quickly. We work with growth-stage businesses that are serious about scaling — book a strategy call and we'll give you an honest assessment of what's possible in your situation.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 8 — COMMUNITY
+════════════════════════════════════════════ -->
+<section id="community" class="py-24 relative overflow-hidden" style="border-top:1px solid #1a1a24;">
+  <div class="absolute inset-0 mesh-blue pointer-events-none"></div>
+  <div class="max-w-5xl mx-auto px-6 relative">
+    <div class="card p-8 md:p-12 fade-in" style="border-color:rgba(59,130,246,0.25);">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <div>
+          <div class="mb-4"><span class="section-eyebrow">Join the Inner Circle</span></div>
+          <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:800;letter-spacing:-0.03em;color:#f0f0f3;margin-bottom:12px;">The BadAaaS<br/>Community</h2>
+          <p style="font-size:0.9rem;color:#6b7280;line-height:1.7;margin-bottom:24px;">Join our private Skool group — where founders and operators get direct access to the playbooks, templates, and conversations that drive our client results.</p>
+          <a href="https://www.skool.com" target="_blank" rel="noopener" class="btn-primary">
+            <i data-lucide="users" style="width:16px;height:16px;"></i>
+            Join on Skool — Free
+          </a>
+        </div>
+        <div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;">
+            <li style="display:flex;align-items:flex-start;gap:12px;">
+              <div style="width:28px;height:28px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <i data-lucide="zap" style="width:13px;height:13px;color:#3b82f6;"></i>
+              </div>
+              <div>
+                <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:0.875rem;color:#f0f0f3;margin-bottom:2px;">Weekly Live Sessions</div>
+                <div style="font-size:0.8rem;color:#6b7280;">Q&amp;A with Greg and Haseeb on real builds and strategies</div>
+              </div>
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:12px;">
+              <div style="width:28px;height:28px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <i data-lucide="file-text" style="width:13px;height:13px;color:#3b82f6;"></i>
+              </div>
+              <div>
+                <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:0.875rem;color:#f0f0f3;margin-bottom:2px;">Playbooks &amp; Templates</div>
+                <div style="font-size:0.8rem;color:#6b7280;">The exact scripts, prompts, and flows we deploy for clients</div>
+              </div>
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:12px;">
+              <div style="width:28px;height:28px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <i data-lucide="message-square" style="width:13px;height:13px;color:#3b82f6;"></i>
+              </div>
+              <div>
+                <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:0.875rem;color:#f0f0f3;margin-bottom:2px;">Founder Network</div>
+                <div style="font-size:0.8rem;color:#6b7280;">Connect with operators scaling with AI in their industries</div>
+              </div>
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:12px;">
+              <div style="width:28px;height:28px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <i data-lucide="book-open" style="width:13px;height:13px;color:#3b82f6;"></i>
+              </div>
+              <div>
+                <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:0.875rem;color:#f0f0f3;margin-bottom:2px;">Case Study Deep Dives</div>
+                <div style="font-size:0.8rem;color:#6b7280;">Behind-the-scenes breakdowns of every client result we publish</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 9 — SECURITY & TRUST
+════════════════════════════════════════════ -->
+<section id="security" class="py-16 max-w-7xl mx-auto px-6">
+  <div class="text-center mb-12 fade-in">
+    <div class="flex justify-center mb-4"><span class="section-eyebrow">Enterprise Grade</span></div>
+    <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:800;letter-spacing:-0.02em;color:#f0f0f3;">Built on a Foundation of Trust.</h2>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 fade-in fade-in-delay-1">
+
+    <div class="trust-badge">
+      <div style="width:40px;height:40px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;">
+        <i data-lucide="shield-check" style="width:20px;height:20px;color:#3b82f6;"></i>
+      </div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.875rem;color:#f0f0f3;">SOC 2 Aligned</div>
+      <div style="font-size:0.75rem;color:#6b7280;line-height:1.5;">Security controls mapped to SOC 2 Type II framework</div>
+    </div>
+
+    <div class="trust-badge">
+      <div style="width:40px;height:40px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;">
+        <i data-lucide="lock" style="width:20px;height:20px;color:#3b82f6;"></i>
+      </div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.875rem;color:#f0f0f3;">End-to-End Encrypted</div>
+      <div style="font-size:0.75rem;color:#6b7280;line-height:1.5;">All data encrypted in transit and at rest with AES-256</div>
+    </div>
+
+    <div class="trust-badge">
+      <div style="width:40px;height:40px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;">
+        <i data-lucide="eye-off" style="width:20px;height:20px;color:#3b82f6;"></i>
+      </div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.875rem;color:#f0f0f3;">GDPR &amp; CCPA Ready</div>
+      <div style="font-size:0.75rem;color:#6b7280;line-height:1.5;">Full compliance support for data privacy regulations</div>
+    </div>
+
+    <div class="trust-badge">
+      <div style="width:40px;height:40px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;">
+        <i data-lucide="activity" style="width:20px;height:20px;color:#3b82f6;"></i>
+      </div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.875rem;color:#f0f0f3;">99.9% Uptime SLA</div>
+      <div style="font-size:0.75rem;color:#6b7280;line-height:1.5;">Enterprise-grade reliability backed by a written guarantee</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 10 — TEAM
+════════════════════════════════════════════ -->
+<section id="team" class="py-24 relative overflow-hidden" style="border-top:1px solid #1a1a24;">
+  <div class="absolute inset-0 mesh-blue pointer-events-none"></div>
+  <div class="max-w-5xl mx-auto px-6 relative">
+    <div class="text-center mb-16 fade-in">
+      <div class="flex justify-center mb-4"><span class="section-eyebrow">The Founders</span></div>
+      <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:800;letter-spacing:-0.03em;color:#f0f0f3;">Built by Operators.<br/>Not Theorists.</h2>
+      <p style="color:#6b7280;margin-top:12px;font-size:1rem;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.6;">We've sold, built, and deployed — which is exactly why what we build actually works.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Greg Mellott -->
+      <div class="card p-8 fade-in fade-in-delay-1">
+        <div class="flex items-start gap-5 mb-6">
+          <div style="width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.4rem;color:white;">G</span>
+          </div>
+          <div>
+            <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.1rem;color:#f0f0f3;">Greg Mellott</div>
+            <div style="font-family:'DM Mono',monospace;font-size:0.72rem;color:#3b82f6;letter-spacing:0.08em;margin-top:3px;">Founder &amp; CEO</div>
+          </div>
+        </div>
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.75;margin-bottom:16px;">Greg built BadAaaS from a simple conviction: that every business deserves access to the same AI infrastructure that Fortune 500 companies spend millions to build. As CEO, he drives the vision — that AI isn't a tool but a fundamental shift in how businesses generate and convert demand.</p>
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.75;">With a background in sales strategy and business development, Greg has led deployments across six verticals and personally oversees client outcomes — because results aren't just a metric, they're the mission.</p>
+        <div class="flex gap-3 mt-6">
+          <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:#6b7280;background:#1a1a24;padding:4px 10px;border-radius:4px;">Vision</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:#6b7280;background:#1a1a24;padding:4px 10px;border-radius:4px;">Strategy</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:#6b7280;background:#1a1a24;padding:4px 10px;border-radius:4px;">Client Success</div>
+        </div>
+      </div>
+
+      <!-- Haseeb Azhar -->
+      <div class="card p-8 fade-in fade-in-delay-2">
+        <div class="flex items-start gap-5 mb-6">
+          <div style="width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,#065f46,#10b981);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.4rem;color:white;">H</span>
+          </div>
+          <div>
+            <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.1rem;color:#f0f0f3;">Haseeb Azhar</div>
+            <div style="font-family:'DM Mono',monospace;font-size:0.72rem;color:#3b82f6;letter-spacing:0.08em;margin-top:3px;">CTO &amp; Co-Founder</div>
+          </div>
+        </div>
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.75;margin-bottom:16px;">Haseeb is the architect behind every BadAaaS system. As CTO, he translates Greg's client vision into production-grade AI infrastructure — from voice agent fine-tuning to full-stack integrations that connect ad platforms, CRMs, and dialers into a seamless revenue engine.</p>
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.75;">His obsession is operational reliability: systems that work without babysitting, scale without breaking, and deliver data that operators actually use. If it's not deployable in 72 hours, it gets rethought.</p>
+        <div class="flex gap-3 mt-6">
+          <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:#6b7280;background:#1a1a24;padding:4px 10px;border-radius:4px;">Architecture</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:#6b7280;background:#1a1a24;padding:4px 10px;border-radius:4px;">AI/ML</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:#6b7280;background:#1a1a24;padding:4px 10px;border-radius:4px;">Integrations</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 11 — FINAL CTA
+════════════════════════════════════════════ -->
+<section id="final-cta" class="py-32 relative overflow-hidden" style="border-top:1px solid #1a1a24;">
+  <!-- Background effects -->
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 70% 60% at 50% 50%, rgba(59,130,246,0.09) 0%, transparent 70%);"></div>
+  <div class="absolute inset-0 dot-grid opacity-30 pointer-events-none"></div>
+
+  <div class="max-w-4xl mx-auto px-6 text-center relative fade-in">
+    <div style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:#3b82f6;margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:10px;">
+      <span style="width:24px;height:1px;background:#3b82f6;display:inline-block;"></span>
+      Let's Build
+      <span style="width:24px;height:1px;background:#3b82f6;display:inline-block;"></span>
+    </div>
+
+    <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;letter-spacing:-0.04em;color:#f0f0f3;line-height:1.05;margin-bottom:20px;">
+      Your AI Workforce<br/>
+      <span class="gradient-text">Goes Live in 72 Hours.</span>
+    </h2>
+
+    <p style="font-size:clamp(1rem,2vw,1.15rem);color:#6b7280;max-width:520px;margin:0 auto 40px;line-height:1.7;">Stop leaving revenue on the table. Book a no-pressure strategy call — we'll audit your current process and show you exactly what AI can unlock for your business.</p>
+
+    <div class="flex flex-wrap justify-center gap-4 mb-16">
+      <a href="mailto:hello@badaaas.com" class="btn-primary" style="font-size:1rem;padding:16px 36px;">
+        <i data-lucide="calendar" style="width:17px;height:17px;"></i>
+        Book Your Strategy Call
+      </a>
+      <a href="#community" class="btn-secondary" style="font-size:1rem;padding:16px 36px;">
+        <i data-lucide="users" style="width:17px;height:17px;"></i>
+        Join the Community
+      </a>
+    </div>
+
+    <!-- Bottom metrics row -->
+    <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+      <div class="text-center">
+        <div style="font-family:'DM Mono',monospace;font-size:1.5rem;font-weight:500;color:#10b981;">$2.4M+</div>
+        <div style="font-size:0.72rem;color:#6b7280;letter-spacing:0.06em;text-transform:uppercase;margin-top:3px;">Revenue Generated</div>
+      </div>
+      <div style="width:1px;height:32px;background:#1a1a24;" class="hidden md:block"></div>
+      <div class="text-center">
+        <div style="font-family:'DM Mono',monospace;font-size:1.5rem;font-weight:500;color:#10b981;">72hrs</div>
+        <div style="font-size:0.72rem;color:#6b7280;letter-spacing:0.06em;text-transform:uppercase;margin-top:3px;">Average Deploy Time</div>
+      </div>
+      <div style="width:1px;height:32px;background:#1a1a24;" class="hidden md:block"></div>
+      <div class="text-center">
+        <div style="font-family:'DM Mono',monospace;font-size:1.5rem;font-weight:500;color:#10b981;">6+</div>
+        <div style="font-size:0.72rem;color:#6b7280;letter-spacing:0.06em;text-transform:uppercase;margin-top:3px;">Industries Served</div>
+      </div>
+      <div style="width:1px;height:32px;background:#1a1a24;" class="hidden md:block"></div>
+      <div class="text-center">
+        <div style="font-family:'DM Mono',monospace;font-size:1.5rem;font-weight:500;color:#10b981;">24/7</div>
+        <div style="font-size:0.72rem;color:#6b7280;letter-spacing:0.06em;text-transform:uppercase;margin-top:3px;">AI Coverage</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer style="border-top:1px solid #1a1a24;padding:40px 0 32px;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <!-- Logo -->
+      <div class="flex items-center gap-2">
+        <div style="width:28px;height:28px;background:#3b82f6;border-radius:6px;display:flex;align-items:center;justify-content:center;">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 1L14 5V11L8 15L2 11V5L8 1Z" fill="white" fill-opacity="0.9"/><path d="M8 4L11 6V10L8 12L5 10V6L8 4Z" fill="white"/></svg>
+        </div>
+        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1rem;color:#f0f0f3;letter-spacing:-0.02em;">BadAaaS</span>
+      </div>
+      <!-- Links -->
+      <div class="flex items-center gap-6">
+        <a href="#case-studies" style="font-size:0.8rem;color:#6b7280;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#f0f0f3'" onmouseout="this.style.color='#6b7280'">Case Studies</a>
+        <a href="#services" style="font-size:0.8rem;color:#6b7280;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#f0f0f3'" onmouseout="this.style.color='#6b7280'">Services</a>
+        <a href="#team" style="font-size:0.8rem;color:#6b7280;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#f0f0f3'" onmouseout="this.style.color='#6b7280'">Team</a>
+        <a href="mailto:hello@badaaas.com" style="font-size:0.8rem;color:#6b7280;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#f0f0f3'" onmouseout="this.style.color='#6b7280'">Contact</a>
+      </div>
+      <!-- Copyright -->
+      <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:#6b7280;">© 2026 BadAaaS. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════ -->
+<script>
+  // Init Lucide icons
+  lucide.createIcons();
+
+  // ── Nav scroll effect ──
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  }, { passive: true });
+
+  // ── Mobile menu ──
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const ham = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    ham.classList.toggle('open');
+  }
+  function closeMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const ham = document.getElementById('hamburger');
+    menu.classList.remove('open');
+    ham.classList.remove('open');
+  }
+
+  // ── Accordion ──
+  function toggleAccordion(btn) {
+    const body = btn.nextElementSibling;
+    const icon = btn.querySelector('.accordion-icon');
+    const isOpen = body.classList.contains('open');
+
+    // Close all
+    document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('open'));
+    document.querySelectorAll('.accordion-icon').forEach(i => i.classList.remove('open'));
+
+    // Open clicked if it was closed
+    if (!isOpen) {
+      body.classList.add('open');
+      icon.classList.add('open');
+    }
+  }
+
+  // ── Scroll-triggered fade-ins ──
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  fadeEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
